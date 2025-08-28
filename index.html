@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SVG Drawing Tool</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="outer-box">
+    <h1>SVG Drawing Tool</h1>
+
+    <div class="controls">
+      <label for="colorPicker">Color</label>
+      <input id="colorPicker" type="color" value="#0aa3ff" title="Stroke color" />
+
+      <label for="widthRange">Stroke</label>
+      <input id="widthRange" type="range" min="1" max="32" value="4" />
+
+      <button id="undoBtn" title="Undo last stroke">Undo</button>
+      <button id="clearBtn" title="Clear canvas">Clear</button>
+      <button id="saveBtn" title="Save as PNG">Save PNG</button>
+    </div>
+
+    <div class="inner-frame">
+      <!-- outer border + inner svg drawing area -->
+      <svg id="canvas" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Drawing canvas">
+        <!-- background rectangle to capture pointer events and show border -->
+        <rect x="20" y="20" width="960" height="560" fill="#f6f7f8" stroke="#ddd" stroke-width="2"></rect>
+        <!-- group where strokes will be appended -->
+        <g id="strokes" stroke-linecap="round" stroke-linejoin="round"></g>
+      </svg>
+    </div>
+
+    <p class="hint">Draw by pressing and dragging the mouse (or touch). Use color & stroke size. Press Save to download the drawing as PNG.</p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+/* Basic page layout */
+:root {
+  --bg: #ffffff;
+  --frame-border: #111;
+  --inner-bg: #f6f7f8;
+  --muted: #666;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 24px;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: #111;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Outer container that matches screenshot border style */
+.outer-box {
+  border: 3px solid var(--frame-border);
+  padding: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+  background: #fff;
+}
+
+/* Title */
+.outer-box h1 {
+  margin: 0 0 10px 0;
+  font-size: 1.6rem;
+}
+
+/* Controls row */
+.controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.controls label {
+  font-weight: 600;
+  margin-right: 6px;
+  font-size: 0.95rem;
+}
+
+.controls input[type="color"] {
+  width: 40px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+}
+
+.controls input[type="range"] {
+  width: 140px;
+}
+
+/* Buttons */
+.controls button {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #bbb;
+  background: #fff;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+.controls button:hover { background: #f2f2f2; }
+
+/* Inner frame to mimic the screenshot's nested border */
+.inner-frame {
+  border: 2px solid #222;
+  padding: 16px;
+  background: #fff;
+}
+
+/* The SVG occupies the framed region; scale responsively */
+#canvas {
+  width: 100%;
+  height: 500px; /* visual height; viewBox handles actual drawing coordinates */
+  display: block;
+}
+
+/* Helpful hint text */
+.hint {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* Make strokes look smooth */
+path.stroke {
+  fill: none;
+  pointer-events: none; /* stroke should not steal pointer events */
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .controls {
+    flex-wrap: wrap;
+  }
+  #canvas { height: 360px; }
+}
